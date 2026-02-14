@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Nicole ❤️</title>
+    <style>
+        body {
+            background-color: #ffeef2;
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Contenedor del Acertijo */
+        #login-acertijo {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 100px;
+            border: 2px solid #ff2d55;
+            border-radius: 8px;
+            text-align: center;
+            outline: none;
+        }
+
+        button {
+            background-color: #ff2d55;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* La Carta (Oculta al principio) */
+        .hidden { display: none; }
+
+        #carta-secreta {
+            max-width: 500px;
+            background: #fff9f0; /* Color papel antiguo */
+            padding: 40px;
+            border-left: 10px solid #ff2d55;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #error-msg { margin-top: 10px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <div id="login-acertijo">
+        <h2>🔒 Misión Secreta</h2>
+        <p>Introduce el código de acceso:</p>
+        <input type="text" id="codigo-input" placeholder="0000" maxlength="4">
+        <br>
+        <button onclick="verificarCodigo()">Desbloquear</button>
+        <p id="error-msg"></p>
+    </div>
+
+    <div id="carta-secreta" class="hidden">
+        <h1>Para Nicole...</h1>
+        <p>
+            Aquí va todo tu mensaje romántico. <br>
+            "Eres mi persona favorita en todo el universo..."
+        </p>
+        <p>❤️</p>
+    </div>
+
+    <script>
+        function verificarCodigo() {
+            const input = document.getElementById('codigo-input').value;
+            const mensajeError = document.getElementById('error-msg');
+            const seccionCarta = document.getElementById('carta-secreta');
+            const seccionLogin = document.getElementById('login-acertijo');
+
+            // Cambia "0812" por el código real (ejemplo 8 de diciembre)
+            if (input === "0812") {
+                seccionLogin.style.display = 'none'; 
+                seccionCarta.classList.remove('hidden'); 
+            } else {
+                mensajeError.innerText = "Código incorrecto...";
+                mensajeError.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>
