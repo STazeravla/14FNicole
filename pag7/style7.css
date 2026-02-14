@@ -1,0 +1,24 @@
+.floating-branches {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.branch {
+  position: absolute;
+  top: -50px;
+  font-size: 24px;
+  opacity: 0.3;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}

@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color:  white/* rgb(199, 76, 199)*/ ;
+    color: rgb(236, 155, 178);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.entrada{
+    text-align: center;
+    font-size: clamp(18px, 5vw, 30px);  /* Tamaño responsivo */
+    max-width: 600px;
+    width: 100%;
+}
+
+.entrada h1 {
+    margin: 0 0 30px 0;
+    font-size: clamp(20px, 6vw, 32px);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.opciones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;  
+    margin: 30px 0;
+}
+
+.opciones button {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px 20px;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-weight: bold;
+    touch-action: manipulation;  /* Mejor para móviles */
+    font-family: 'Inter', sans-serif;
+}
+
+.opciones button:hover,
+.opciones button:active {
+    background-color: #ff1493;
+    transform: scale(1.05);
+}
+
+.mensaje {
+    margin-top: 20px;
+    font-size: clamp(50px, 50vw, 100px);
+    min-height: 60px;
+    font-family: 'Story Script', cursive;
+    font-weight: 400;
+}
+
+/* Para tablets y pantallas más grandes */
+@media (min-width: 768px) {
+    .opciones button {
+        width: 300px;
+    }
+    
+    body {
+        min-height: 100vh;
+    }
+}
+
+.oculto {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.mensaje {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.mensaje.visible {
+  opacity: 1;
+}
+
+/* mensaje centrado absoluto cuando está solo */
+.centrado {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  font-size: clamp(40px, 15vw, 65px);
+}
+
+/* fondo para la opción C */
+body.romance {
+  background-color:  rgb(199, 76, 199);
+  transition: background-color 2.5s ease;
+}
+
+.mensaje em {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Tamaño más pequeño para opciones A y B */
+.mensaje.opcion-ab.centrado {
+  font-size: 30px;
+}
+
+/* From Uiverse.io by catraco */ 
+.heart-container {
+  --heart-color: rgb(255, 91, 137);
+  position: relative;
+  width: 140px;
+  height: 140px;
+  transition: .3s;
+}
+
+.heart-container .checkbox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.heart-container .svg-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart-container .svg-outline,
+        .heart-container .svg-filled {
+  fill: var(--heart-color);
+  position: absolute;
+}
+
+.heart-container .svg-filled {
+  animation: keyframes-svg-filled 1s;
+  display: none;
+}
+
+.heart-container .svg-celebrate {
+  position: absolute;
+  animation: keyframes-svg-celebrate .5s;
+  animation-fill-mode: forwards;
+  display: none;
+  stroke: var(--heart-color);
+  fill: var(--heart-color);
+  stroke-width: 2px;
+}
+
+.heart-container .checkbox:checked~.svg-container .svg-filled {
+  display: block
+}
+
+.heart-container .checkbox:checked~.svg-container .svg-celebrate {
+  display: block
+}
+
+@keyframes keyframes-svg-filled {
+  0% {
+    transform: scale(0);
+  }
+
+  25% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: scale(1);
+    filter: brightness(1.5);
+  }
+}
+
+@keyframes keyframes-svg-celebrate {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+    display: none;
+  }
+}
+
+
+.heart-flood {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.flood-heart {
+  position: absolute;
+  bottom: -30px;
+  color: rgb(255, 91, 137);
+  font-size: 20px;
+  opacity: 0.9;
+  animation: floodUp linear forwards;
+}
+
+@keyframes floodUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh) scale(2);
+    opacity: 1;
+  }
+}
